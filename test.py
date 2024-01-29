@@ -6,8 +6,8 @@ import re
 import ast
 import os
 import time
-from dataclasses import dataclass, field
-
+from dataclasses import dataclass, field, asdict
+import json
 
 @dataclass
 class PachiMachine:
@@ -128,8 +128,8 @@ def scraping_get_pachi_info(url: str, machine_kind: str):
             #################################################################################
 
             # データ収集
-            pachi_machine_info_list.append(PachiMachine(
-                id=id, end_time=ep[0], end_point=ep[1]))
+            pachi_machine_info_list.append(asdict(PachiMachine(
+                id=id, end_time=ep[0], end_point=ep[1])))
 
             browser.back()
             count += 1
@@ -154,3 +154,6 @@ machine_kinds = ["P新世ｴｳﾞｧ15未来への咆哮"]
 result = {sid: {mk: scraping_get_pachi_info(os.path.join(
     url, sid), mk) for mk in machine_kinds} for sid in shop_ids}
 print(result)
+
+with open('result.json', 'w') as f:
+    json.dump(result, f,indent=4,ensure_ascii=False)

@@ -4,7 +4,7 @@
 docker-compose up -d
 
 # コンテナが終了するまで待機
-while docker ps | grep "pachi-app-1"; do
+while docker ps | grep "app"; do
   echo "pachi-app container is still running"
   sleep 5
 done

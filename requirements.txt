@@ -1,5 +1,1 @@
 selenium
-jupyter
-requests
-BeautifulSoup4
-PyDrive

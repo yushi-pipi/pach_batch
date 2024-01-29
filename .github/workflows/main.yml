@@ -1,0 +1,12 @@
+name: auto scraping
+
+on:　workflow_dispatch
+
+jobs:
+  app:
+    name: scraping app 
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+      - name: run
+        run: deply.sh

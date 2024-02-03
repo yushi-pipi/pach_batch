@@ -1,8 +1,5 @@
 name: auto scraping
-
 on: workflow_dispatch
-
-  
 jobs:
   app:
     name: scraping app 

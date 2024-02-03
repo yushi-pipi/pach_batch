@@ -9,5 +9,7 @@ jobs:
         GMAIL_APP_PASSWORD: ${{secrets.GMAIL_APP_PASSWORD}}
     steps:
       - uses: actions/checkout@v3
+      - uses: satackey/action-docker-layer-caching@v0.0.11
+        continue-on-error: true
       - name: run
         run: bash deploy.sh

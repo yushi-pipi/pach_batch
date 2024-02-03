@@ -6,9 +6,5 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
-      - name: use searcret
-        with:
-            GMAIL_SEND_ADDRESS: ${{secrets.GMAIL_SEND_ADDRESS}}
-            GMAIL_APP_PASSWORD: ${{secrets.GMAIL_APP_PASSWORD}}
       - name: run
         run: bash deploy.sh

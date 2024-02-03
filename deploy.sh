@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Docker Compose でコンテナをバックグラウンドで起動
-docker-compose up -d
+docker-compose up 
 
 # コンテナが終了するまで待機
 while docker ps | grep "app"; do

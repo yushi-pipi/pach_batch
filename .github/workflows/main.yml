@@ -12,7 +12,7 @@ jobs:
       - uses: satackey/action-docker-layer-caching@v0.0.11
         continue-on-error: true
       - name: run
-        env:
+        with:
           GMAIL_SEND_ADDRESS: ${{secrets.GMAIL_SEND_ADDRESS}}
           GMAIL_APP_PASSWORD: ${{secrets.GMAIL_APP_PASSWORD}}
         run: bash deploy.sh

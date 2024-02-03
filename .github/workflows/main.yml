@@ -11,8 +11,9 @@ jobs:
       - uses: actions/checkout@v3
       - uses: satackey/action-docker-layer-caching@v0.0.11
         continue-on-error: true
-      - name: run
+      - name: use searcret
         with:
-          GMAIL_SEND_ADDRESS: ${{secrets.GMAIL_SEND_ADDRESS}}
-          GMAIL_APP_PASSWORD: ${{secrets.GMAIL_APP_PASSWORD}}
+            GMAIL_SEND_ADDRESS: ${{secrets.GMAIL_SEND_ADDRESS}}
+            GMAIL_APP_PASSWORD: ${{secrets.GMAIL_APP_PASSWORD}}
+      - name: run
         run: bash deploy.sh

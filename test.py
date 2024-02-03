@@ -8,6 +8,7 @@ import os
 import time
 from dataclasses import dataclass, field, asdict
 import json
+from mail_send import send_mail
 
 @dataclass
 class PachiMachine:
@@ -154,6 +155,8 @@ machine_kinds = ["P新世ｴｳﾞｧ15未来への咆哮"]
 result = {sid: {mk: scraping_get_pachi_info(os.path.join(
     url, sid), mk) for mk in machine_kinds} for sid in shop_ids}
 print(result)
+send_mail(str(result))
+
 
 with open('result.json', 'w') as f:
     json.dump(result, f,indent=4,ensure_ascii=False)

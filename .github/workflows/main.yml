@@ -1,6 +1,10 @@
 name: auto scraping
 
 on: workflow_dispatch
+env:
+  GMAIL_SEND_ADDRESS: ${{secrets.GMAIL_SEND_ADDRESS}}
+  GMAIL_APP_PASSWORD: ${{secrets.GMAIL_APP_PASSWORD}}
+  
 jobs:
   app:
     name: scraping app 
@@ -9,13 +13,3 @@ jobs:
       - uses: actions/checkout@v3
       - name: run
         run: bash deploy.sh
-
-      - name: Print File Content
-        run: cat result.json
-
-      - name: Archive Output
-        uses: actions/upload-artifact@v2
-        with:
-          name: my-artifact
-          path: result.json
-          expire-in: 1w  # 1週間アーティファクトを保持

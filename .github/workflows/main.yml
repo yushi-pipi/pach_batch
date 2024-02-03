@@ -1,15 +1,15 @@
 name: auto scraping
-
 on: workflow_dispatch
-env:
-  GMAIL_SEND_ADDRESS: ${{secrets.GMAIL_SEND_ADDRESS}}
-  GMAIL_APP_PASSWORD: ${{secrets.GMAIL_APP_PASSWORD}}
-  
 jobs:
   app:
     name: scraping app 
     runs-on: ubuntu-20.04
+    env:
+        GMAIL_SEND_ADDRESS: ${{secrets.GMAIL_SEND_ADDRESS}}
+        GMAIL_APP_PASSWORD: ${{secrets.GMAIL_APP_PASSWORD}}
     steps:
       - uses: actions/checkout@v3
+      - uses: satackey/action-docker-layer-caching@v0.0.11
+        continue-on-error: true
       - name: run
         run: bash deploy.sh

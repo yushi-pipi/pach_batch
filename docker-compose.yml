@@ -17,6 +17,8 @@ services:
       - selenium
     environment:
       SELENIUM_URL: http://selenium:4444/wd/hub
+      GMAIL_APP_PASSWORD:
+      GMAIL_SEND_ADDRESS:
     #command: jupyter-notebook --port=8888 --ip=0.0.0.0 --allow-root --NotebookApp.token=''
     command: python test.py 
     tty: true

@@ -155,8 +155,23 @@ machine_kinds = ["P新世ｴｳﾞｧ15未来への咆哮"]
 result = {sid: {mk: scraping_get_pachi_info(os.path.join(
     url, sid), mk) for mk in machine_kinds} for sid in shop_ids}
 print(result)
-send_mail(str(result))
+message = []
+for m in result:
+    message.append(f"店舗ID:{m}")
+    message.append("\n")
+    for k in result[m]:
+        message.append(f"機種:{k}")
+        message.append("\n")
+        for info in result[m][k]:
+            message.append(f"台番号:{info['id']}")
+            message.append(f"最終日:{info['end_time']}")
+            message.append(f"最終値:{info['end_point']}")
+            message.append("\n")
+        message.append("\n")
+    message.append("\n")
+message = ''.join(message)
+send_mail(message)
 
 
-with open('result.json', 'w') as f:
-    json.dump(result, f,indent=4,ensure_ascii=False)
+# with open('result.json', 'w') as f:
+#     json.dump(result, f,indent=4,ensure_ascii=False)

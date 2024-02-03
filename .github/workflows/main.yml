@@ -1,9 +1,7 @@
 name: auto scraping
 
 on: workflow_dispatch
-env:
-  GMAIL_SEND_ADDRESS: ${{secrets.GMAIL_SEND_ADDRESS}}
-  GMAIL_APP_PASSWORD: ${{secrets.GMAIL_APP_PASSWORD}}
+
   
 jobs:
   app:
@@ -12,4 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: run
+        env:
+          GMAIL_SEND_ADDRESS: ${{secrets.GMAIL_SEND_ADDRESS}}
+          GMAIL_APP_PASSWORD: ${{secrets.GMAIL_APP_PASSWORD}}
         run: bash deploy.sh

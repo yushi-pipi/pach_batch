@@ -4,6 +4,9 @@ jobs:
   app:
     name: scraping app 
     runs-on: ubuntu-20.04
+    env:
+        GMAIL_SEND_ADDRESS: ${{secrets.GMAIL_SEND_ADDRESS}}
+        GMAIL_APP_PASSWORD: ${{secrets.GMAIL_APP_PASSWORD}}
     steps:
       - uses: actions/checkout@v3
       - name: run
